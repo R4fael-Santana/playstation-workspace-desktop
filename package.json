@@ -1,0 +1,45 @@
+{
+  "name": "playstation-workspace",
+  "productName": "PlayStation Workspace",
+  "version": "1.0.0",
+  "description": "PlayStation Workspace — agenda e catálogo",
+  "author": "PlayStation Workspace",
+  "main": "main.js",
+  "psw": {
+    "appUrl": "https://SEU-PROJETO.vercel.app"
+  },
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win --x64",
+    "release": "electron-builder --win --x64 --publish always"
+  },
+  "dependencies": {
+    "electron-updater": "^6.8.11"
+  },
+  "devDependencies": {
+    "electron": "^45.4.1",
+    "electron-builder": "^26.18.0"
+  },
+  "build": {
+    "appId": "br.com.playstationworkspace",
+    "productName": "PlayStation Workspace",
+    "directories": { "buildResources": "build", "output": "dist" },
+    "files": ["main.js", "offline.html", "package.json", "build/icon.png"],
+    "win": {
+      "target": [{ "target": "nsis", "arch": ["x64"] }],
+      "icon": "build/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "PlayStation Workspace",
+      "artifactName": "PlayStation-Workspace-Setup-${version}.${ext}"
+    },
+    "publish": [
+      { "provider": "github", "owner": "SEU-USUARIO-GITHUB", "repo": "playstation-workspace-desktop" }
+    ]
+  }
+}

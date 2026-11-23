@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>PlayStation Workspace</title>
+<style>
+body{margin:0;min-height:100vh;display:grid;place-items:center;font:15px/1.5 'Segoe UI',system-ui,sans-serif;color:#0b1b3a;background:linear-gradient(160deg,#f6f9ff,#e3ecfb)}
+.card{width:min(440px,90vw);padding:32px;border-radius:26px;background:rgba(255,255,255,.7);box-shadow:0 20px 60px -20px rgba(0,40,130,.4);text-align:center}
+.logo{width:60px;height:60px;margin:0 auto 16px;border-radius:17px;display:grid;place-items:center;background:linear-gradient(135deg,#1a94ff,#0057d9 55%,#00206e)}
+.logo span{width:20px;height:20px;border-radius:5px;background:#fff;transform:rotate(45deg)}
+h1{font-size:22px;margin:0 0 6px}p{color:#5d6f8d;margin:0 0 20px}
+button{height:46px;padding:0 26px;border:0;border-radius:999px;color:#fff;font:700 15px 'Segoe UI',sans-serif;background:linear-gradient(135deg,#1a94ff,#0057d9 55%,#00206e);cursor:pointer}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="logo"><span></span></div>
+  <h1 id="t">Sem conexão</h1>
+  <p id="m">O PlayStation Workspace precisa de internet para abrir. Verifique sua conexão e tente de novo.</p>
+  <button id="b">Tentar de novo</button>
+</div>
+<script>
+const url=new URLSearchParams(location.search).get('url');
+if(!url){document.getElementById('t').textContent='Programa sem endereço configurado';document.getElementById('m').textContent='Este instalador foi gerado sem o endereço do site (psw.appUrl no package.json).';document.getElementById('b').hidden=true}
+document.getElementById('b').onclick=()=>{location.href=url+'/index.html'};
+window.addEventListener('online',()=>{if(url)location.href=url+'/index.html'});
+</script>
+</body>
+</html>
