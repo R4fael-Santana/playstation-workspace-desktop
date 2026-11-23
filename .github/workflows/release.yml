@@ -1,0 +1,24 @@
+# Gera o instalador do Windows e publica como nova versão (Releases) sempre que você criar uma tag v1.0.1, v1.0.2...
+# Os programas já instalados encontram a versão nova sozinhos e oferecem para reiniciar.
+name: Gerar instalador
+
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install
+      - run: npx electron-builder --win --x64 --publish always
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
