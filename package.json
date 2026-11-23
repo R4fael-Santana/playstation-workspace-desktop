@@ -6,7 +6,7 @@
   "author": "PlayStation Workspace",
   "main": "main.js",
   "psw": {
-    "appUrl": "https://SEU-PROJETO.vercel.app"
+    "appUrl": "https://playstation-workspace.vercel.app"
   },
   "scripts": {
     "start": "electron .",
