@@ -1,7 +1,7 @@
 {
   "name": "playstation-workspace",
   "productName": "PlayStation Workspace",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "PlayStation Workspace — agenda e catálogo",
   "author": "PlayStation Workspace",
   "main": "main.js",
